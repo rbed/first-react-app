@@ -1,0 +1,39 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul {
+  display: flex;
+}
+
+li {
+  text-align: center;
+  list-style: none;
+  flex-grow: 1;
+
+}
+
+a {
+  color: white;
+  display: block;
+  text-decoration: none;
+  padding: 20px;
+  background-color: black;
+  border-bottom: 3px solid black;
+}
+
+a:hover {
+  color: yellow;
+  border-bottom-color: yellow;
+}
+
+section {
+  padding: 50px;
+  text-align: center;
+}
+
+.active {
+  border-bottom-color: yellow;
+}

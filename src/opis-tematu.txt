@@ -1,0 +1,85 @@
+
+
+
+BIBLIOTEKI
+npm intall react-router-dom
+z czego możemy importować
+import{BrowserRouter, Route, NavLink, Oink itd} from 'react-router-dom'
+
+=-----------------------------------------------------
+Link i NavLink
+zamiast
+<li><a href="/"></a></li>
+<li><a href="/news"></a></li>
+<li><a href="/contact"></a></li>
+
+trzeba zrobić
+<li><NavLink to="/"></NavLink></li>
+<li><NavLink to="/news"></NavLink></li>
+<li><NavLink to="/contact"></NavLink></li>
+
+dzięki temu zmienia się url bez przeładowywania storny. 
+NavLink wskazuje też element aktywny (w przeciwieństwie do Link)
+
+------------------------------------------------------
+Route
+<Route path="/contact" component={Contact}/>
+jeżeli ścieżka to "/contact" wyświetl komponent Contact
+
+exact
+<Route path="/" exact component={Home}/>
+dodanie do Route słowa exact (a własciwie exact={true}) powoduje, że komponent wyświetla się dla 
+ścieżki dokładnie takiej jak wskazana. 
+
+----------------------------------
+
+Route - component
+<Route path='/' exact component={SomeComponent}/>
+wtedy wzracany jest component w zależności od ścieżki
+
+----------------------------------
+
+Route - render
+<Route path='/' exact render={() => (<img src={img1} alt=""/>)}/>
+a teraz na bieżąco renderowane jest coś
+
+----------------------------------
+Przy wywoływnaiu componentu
+zostaje stworzony specjalny obiekt mający szczegółowe informacje o tym komponencie. Jest on dostepny z poziomu propsów np:
+props.match.params.is
+
+<Route path='/:page' exact render={(props) => {
+                console.log(props)
+                return(
+                    <>
+                    <p>nazwa podstrony {props.match.params.page}</p>
+                    <p>adres podstrony {props.match.url}</p>
+                    </>
+                )
+            }}/>
+
+----------------------------------
+Redirect 
+słuzy do redirecta :)
+<Route render={() => (permistion ? (<h3>panel admina</h3>) : (<Redirect to='/login' />))} />
+jeżeli parmission jest prawdą to pokazuje panel admina, jeżeli nie to 301 do storn ylogowania
+
+można w redirect przekazywać bardzieł złożone dodanie
+
+<Redirect to={{
+            pathname: '/order',
+            state: { id: '123' }
+        }}
+/>
+
+dane te są dostępne 
+this.props.location.state.id
+
+---------------------------------
+
+<Prompt
+  when={formIsHalfFilledOut}
+  message="Are you sure you want to leave?"
+/>
+
+prompt słuzy do zapobiegania zmiany strony przed dokończeniem czegoś. np przed zmianą przy niewysłanym formularzu.

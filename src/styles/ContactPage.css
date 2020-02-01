@@ -1,0 +1,26 @@
+.form {
+    width: 100%;
+}
+
+.formBoxes {
+    width: 80%;
+    margin: 0 auto;
+}
+
+textarea {
+    width: 100%;
+    margin: 0 auto;
+}
+
+button {
+    display: block;
+    float: right;
+    padding: 5px 10px;
+    background-color: white;
+    border: 2px solid black;
+
+}
+
+.form h2 {
+    margin: 0 20px 10px 20px
+}
